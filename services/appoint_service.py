@@ -168,8 +168,8 @@ class Appoint_Service:
                         status_code=404
                     )
 
-                dup = """SELECT COUNT(*) FROM citas WHERE fecha_cita=%s AND hora_inicio=%s AND doc_asig=%s"""
-                cursor.execute(dup, (appoint_data.fecha_cita, appoint_data.hora_inicio, appoint_data.doc_asig))
+                dup = """SELECT COUNT(*) FROM citas WHERE fecha_cita=%s AND hora_inicio=%s AND hora_fin=%s AND doc_asig=%s"""
+                cursor.execute(dup, (appoint_data.fecha_cita, appoint_data.hora_inicio, appoint_data.hora_fin, appoint_data.doc_asig))
                 
                 if cursor.fetchone()[0] > 0:
                     return JSONResponse(
